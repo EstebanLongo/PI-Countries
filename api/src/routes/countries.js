@@ -1,61 +1,47 @@
 const { Router } = require("express");
-const { Country, Activity } = require("../db.js");
-const { getAllCountries } = require("./controllerFunctions.js");
+const { getDbInfo } = require("./controllerFunctions.js");
 const router = Router();
 
-// router.get('/', async (req, res, next) => {
-//     const name = req.query.name
-//     let countriesTotal = await getAllCountries();
-//     if (name) {
-//         let countryName = await countriesTotal.filter( el => el.name.toLowerCase().inclues(name.toLowerCase()))
-//         countryName.length ?
-//         res.status(200).send(countryName) :
-//         res.status(404).send('No esta el pais')
-//     } else {
-//         res.status(200).send(countriesTotal)
-//     }
-// })
+router.get("/", async (req, res) => {
+  const name = req.query.name;
+  let countryTotals = await getDbInfo();
+  //console.log(countryTotals)
 
-// router.get("/", async (req, res, next) => {
-//   const db = await Country.findAll({
-//     include: {
-//       model: Activity,
-//     },
-//   });
+  if (name) {
+    let countryName = await countryTotals.filter((el) =>
+      el.name.toLowerCase().includes(name.toLowerCase())
+    );
+    if (countryName.length) {
+      return res.status(200).send(countryName);
+    } else {
+      return res.status(404).send("No hay pais");
+    }
+  }
+  return res.status(200).send(countryTotals);
+});
 
-//   const name = req.query.name;
-
-//   if (name) {
-//     let dataQuery = db.filter((e) =>
-//       e.dataValues.name.toLowerCase().includes(name.toLowerCase())
+// router.get("/:id", async (req, res) => {
+//   const { id } = req.params;
+  
+//   if (id) {
+//     let countryTotals = await getDbInfo();
+//     let country = await countryTotals.filter(
+//       (el) => el.cca3.toLowerCase().startsWith(id.toLowerCase())
 //     );
-//     return dataQuery.length ? res.json(dataQuery) : res.sendStatus(404);
-//   } else {
-//     res.send(db);
+//       country ? res.status(200).json(country) : res.status(404).send("No such country");
 //   }
 // });
-router.get("/", async (req, res) => {
-    const db = await Country.findAll({
-      include: {
-        model: Activity,
-      },
-    });
-    // query filter
-    const name = req.query.name;
-    // query filter
-  
-    if (name) {
-      let dataQuery = db.filter((e) =>
-        e.dataValues.name.toLowerCase().includes(name.toLowerCase())
-      );
-      return dataQuery.length ? res.json(dataQuery) : res.sendStatus(404);
-    } else {
-      res.send(db);
-    }
-  });
 
-router.post("/", (req, res, next) => {
-  res.send("soy post /countries");
-});
+router.get('/:id', async (req, res)=> {
+  const {id} = req.params;
+  try{
+    let dbInfo = await getDbInfo();
+    let countryId = dbInfo.filter( el => el.cca3.toLowerCase().startsWith(id.toLowerCase()))
+    countryId ?
+    res.status(200).send(countryId)
+    : res.status(404).send('Country not found')
+  }
+  catch (error) {res.send(error)}
+})
 
 module.exports = router;
