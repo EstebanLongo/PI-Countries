@@ -6,19 +6,13 @@ module.exports = (sequelize) => {
   sequelize.define(
     "country",
     {
-      id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
-        allowNull: false,
-        primaryKey: true,
-      },
-      cca3: {
-        type: DataTypes.STRING(3),
-        allowNull: false,
-      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      cca3: {
+        type: DataTypes.STRING(3),
+        primaryKey: true,
       },
       flag: {
         type: DataTypes.TEXT,

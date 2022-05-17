@@ -1,15 +1,37 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCountries } from "../../redux/actions";
-import { Link } from "react-router-dom";
-import CountryCard from "../CountryCard/CountryCard";
+import CountryCard from "../CountryCard/CountryCard.jsx";
+import Paginate from "../Paginate/Paginate.jsx";
+import Population from "../Order/Population.jsx";
+import Continents from "../Filters/Continents.jsx";
+import ActivitiesFilter from "../Filters/ActivitiesFilter";
+
+import NavBar from "../NavBar/NavBar.jsx";
+import Name from "../Order/Name.jsx";
+import "./home.css";
 
 export default function Home() {
   //esto es para usar la const dispatch e ir despachando mis acciones
   const dispatch = useDispatch();
   //esto es lo mismo que hacer el mapStateToProps
   const allCountries = useSelector((state) => state.countries);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [countriesPerPage] = useState(10);
+  const indexOfLastCountry = currentPage * countriesPerPage;
+  const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+  const currentCountries = allCountries.slice(
+    indexOfFirstCountry,
+    indexOfLastCountry
+  );
+
+  const [order, setOrder] = useState("");
+
+  const paginado = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   useEffect(() => {
     dispatch(getCountries());
@@ -21,55 +43,64 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <Link to="/activity">Crear Actividad</Link>
-      <h1>HOME COUNTRIES PI</h1>
-      <button
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        Volver a cargar todos los paises
-      </button>
-
+    <div className="home">
+      <NavBar setCurrentPage={setCurrentPage} />
       <div>
-        <span>Order by population</span>
-        <select>
-          <option value="asc">Ascendente</option>
-          <option value="desc">Descendente</option>
-        </select>
+        <button className="reload"
+          onClick={(e) => {
+            handleClick(e);
+          }}
+        >
+          Reload Countries
+        </button>
       </div>
 
-      <div>
-        <span>Order by name</span>
-        <select>
-          <option value="az">A-Z</option>
-          <option value="za">Z-A</option>
-        </select>
+      <div className="filters">
+
+        <div>
+          <Population setOrder={setOrder} setCurrentPage={setCurrentPage} />
+        </div>
+          <br/>
+
+        <div>
+          <Name setOrder={setOrder} setCurrentPage={setCurrentPage} />
+        </div>
+        <br/>
+
+        <div>
+          <Continents setCurrentPage={setCurrentPage} />
+        </div>
+        <br/>
+
+        <div>
+          <ActivitiesFilter setCurrentPage={setCurrentPage} />
+        </div>
+        <br/>        
       </div>
 
-      <div>
-        <span>Filter by activities</span>
-        <select>
-          <option value="all">All</option>
-        </select>
-        {console.log(allCountries)}
+      <div className="cardsHome">
+        {console.log("allcountries: ", allCountries)}
+        {currentCountries
+          ? currentCountries.map((el) => {
+              return (
+                <div key={el.id}>
+                  <CountryCard
+                    id={el.cca3}
+                    name={el.name}
+                    continent={el.continent}
+                    flag={el.flag}
+                  />
+                </div>
+              );
+            })
+          : "Loading"}
       </div>
 
-      {allCountries
-        ? allCountries.map((el) => {
-            return (
-              <div>
-                <CountryCard
-                  id={el.cca3}
-                  name={el.name}
-                  continent={el.continent}
-                  flag={el.flag}
-                />
-              </div>
-            );
-          })
-        : "Loading"}
+      <Paginate
+        countriesPerPage={countriesPerPage}
+        allCountries={allCountries.length}
+        paginado={paginado}
+      />
     </div>
   );
 }

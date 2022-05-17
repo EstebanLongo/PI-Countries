@@ -1,0 +1,93 @@
+.formcontainer{
+    /* background: rgb(54,101,159);
+    background: linear-gradient(356deg, rgba(54,101,159,1) 0%, rgba(9,6,106,1) 100%); */
+    background-color: rgba(250, 229, 202, 0.918);
+    height: 950px;
+}
+p.danger {
+    color: red;
+    font-size: 10px;
+  }
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(39, 158, 158, 0.683);
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
+    margin-left: 500px;
+    padding: 10px;
+    justify-content: space-around;
+    width: 500px;
+    height: 700px;
+    
+}
+
+.inputs{
+   
+    top: 0;
+    display: block;
+    transition: 0.4s;
+    font-size: 1rem;
+    color: gray;
+      
+}
+
+.divlabels{
+    margin-right: 95px;
+}
+
+
+.box{
+    background-color: rgba(168, 36, 36, 0.648);
+    height: 55px;
+    border-radius: 4px;
+}
+
+.hvr-grow-shadow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+  }
+  .hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+
+
+
+.img{
+    width: 275px;
+    border: cornsilk solid 1px;
+    border-radius: 6px;
+}
+
+.label{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    text-decoration: solid;
+}
+
+.season{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+

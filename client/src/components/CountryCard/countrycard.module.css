@@ -1,0 +1,39 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: rgba(0, 0, 0, 0.539) solid 2px;
+    border-radius: 35px;
+    width: 250px;
+    padding-top: 10px;
+    height: 320px;
+    margin-left: 50px;
+    background-color: rgba(52, 33, 3, 0.361);
+    margin-bottom: 38px;
+    /* background: rgb(9,6,106);
+background: radial-gradient(circle, rgba(9,6,106,1) 27%, rgba(54,101,159,1) 90%); */
+/* background-color: rgba(39, 158, 158, 0.524); */
+
+}
+.card:hover{
+    box-shadow: 12px 20px 35px rgba(0,0,0,0.3);
+    transition: opacity 0.8s ease-out;
+    transform: scale(1.1, 1.2);
+}
+
+.name{
+    text-decoration: none;
+    color:black;
+    cursor: pointer;
+}
+
+.name:hover{
+    transition: opacity 0.3s ease-out;
+    transform: scale(1.1, 1.1); 
+    text-shadow: 0 10px 25px rgba(0, 0, 0, 0.557);
+}
+
+.img{
+    margin-top: 10px;
+    border-radius: 10px;
+}

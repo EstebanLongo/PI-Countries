@@ -1,0 +1,7 @@
+.orders{
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    width: 150px;
+    text-align: left;
+}

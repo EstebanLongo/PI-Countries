@@ -1,0 +1,35 @@
+.home{
+    /* background-image: url('https://media.istockphoto.com/photos/dark-blue-stained-grungy-background-or-texture-picture-id1132593892?k=20&m=1132593892&s=612x612&w=0&h=dMVA_OoY01ef2jUR223F4M0vFA4HRZ8i44q9TMZGHcQ='); */
+    /* background: rgb(54,69,159);
+    background: linear-gradient(356deg, rgba(54,69,159,1) 16%, rgba(9,6,106,1) 76%); */
+    background-color: rgba(250, 229, 202, 0.918);
+
+}
+
+
+.cardsHome{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filters{
+    display: flex; 
+    flex-direction: column;
+    float: left;
+    background-color: rgba(102, 102, 134, 0.338);
+    border-radius: 7px;
+    width: 180px;
+    height: 1010px;
+    float: left;
+    padding: 5px;
+    align-items: baseline;
+    
+}
+
+.reload{
+    float: right;
+    margin-right: 650px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}

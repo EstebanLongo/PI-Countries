@@ -1,0 +1,28 @@
+.searchbar{
+    display: flex;
+    margin-top: 36px;
+    height: 30px;
+    margin-left: 15px;
+}
+
+
+
+.input{
+    background-color: rgba(209, 203, 214, 0.69);
+    border-radius: 10px;
+    margin-right: 5px;
+    border: 2px solid;
+    box-shadow: 0px 2px 6px rgba(222, 216, 216, 0.856);
+    color: black;
+}
+
+.button{
+    background-color: rgba(209, 203, 214, 0.831);
+    border-radius: 15px;
+    height: 32px;
+    width: 57px;
+    color: rgb(0, 0, 0);
+    border: 2px solid;
+    margin-top: 1px;
+    margin-left: 5px;
+}

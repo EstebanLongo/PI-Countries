@@ -2,12 +2,24 @@ const { Router } = require("express");
 const router = Router();
 const { Country, Activity } = require("../db.js");
 
+router.get('/', async (req, res)=> {
+  try{
+    const activityDb = await Activity.findAll({
+      attributes: ['name'],
+      include: Country
+    })
+    res.status(200).send(activityDb)
+  } catch (error){
+    console.log(error)
+  }
+})
+
 router.post("/", async (req, res) => {
   const { name, difficulty, duration, season, countries } = req.body;
-  const nuevaActivity = { name, difficulty, duration, season };
+  const activity = { name, difficulty, duration, season };
 
   try {
-    const newActivity = await Activity.create(nuevaActivity);
+    const newActivity = await Activity.create(activity);
     const countriesMatch = await Country.findAll({
       where: {
         name: countries,

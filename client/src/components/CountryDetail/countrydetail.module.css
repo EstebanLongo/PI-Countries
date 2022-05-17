@@ -1,0 +1,21 @@
+.countryDetail {
+  display: flex;
+  flex-direction: column;
+  /* margin-left: 400px; */
+  justify-content: center;
+  padding: 5px;
+  margin: 0 auto;
+  border: black 3px solid;
+  height: 450px;
+  width: 450px;
+  background-color: rgba(90, 81, 29, 0.526);
+}
+
+.backDetail {
+  background-color: rgba(0, 0, 0, 0.898);
+  height: 590px;
+}
+
+.h2 {
+  color: rgba(245, 245, 220, 0.848);
+}
