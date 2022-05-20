@@ -33,7 +33,7 @@ export default function Name({ setOrder, setCurrentPage }) {
     <div className={styles.orders}>
       <span>Order by name</span>
       <br/>
-      <select onChange={(e) => handleName(e)}>
+      <select onChange={(e) => handleName(e)} className={styles.select}>
         <option value="All">All</option>
         <option value="az">A-Z</option>
         <option value="za">Z-A</option>

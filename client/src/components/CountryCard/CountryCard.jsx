@@ -15,7 +15,7 @@ export default function CountryCard({ id, flag, name, continent }) {
       <h3>
         <Link className={styles.name} to={"/home/" + id}>{name}</Link>
       </h3>
-      <h4>{continent}</h4>
+      <h4 className={styles.font}>{continent}</h4>
     </div>
   );
 }

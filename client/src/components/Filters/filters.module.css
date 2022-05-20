@@ -4,4 +4,13 @@
     justify-content: baseline;
     width: 150px;
     text-align: left;
+    color: rgba(250, 235, 215, 0.813);
+    margin-left: 10px;
+}
+
+.select{
+    border: 1px black solid;
+    box-shadow: 1px 0.5px 7px 1.3px;
+    border-radius: 5px;
+    background-color: rgba(250, 235, 215, 0.813);
 }

@@ -3,6 +3,7 @@ const initialState = {
   countriesCopy: [],
   activities: [],
   countryDetail: {},
+  delete: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -12,6 +13,12 @@ function rootReducer(state = initialState, action) {
         ...state,
         countries: action.payload,
         countriesCopy: action.payload,
+      };
+
+    case "SEARCH_COUNTRY_NAME":
+      return {
+        ...state,
+        countries: action.payload,
       };
 
     case "ORDER_BY_POPULATION": {
@@ -47,10 +54,18 @@ function rootReducer(state = initialState, action) {
         countries: continentFiltered,
       };
 
-    case "SEARCH_COUNTRY_NAME":
+    case "FILTER_ACTIVITIES":
+      const filterByAct = state.countriesCopy;
+      let actFiltered =
+        action.payload === "All"
+          ? filterByAct
+          : filterByAct.filter((a) =>
+              a.activities.map((a) => a.name).includes(action.payload)
+            );
+      console.log("ACT: ", actFiltered);
       return {
         ...state,
-        countries: action.payload,
+        countries: actFiltered,
       };
 
     case "GET_DETAIL":
@@ -70,9 +85,20 @@ function rootReducer(state = initialState, action) {
         activities: action.payload,
       };
 
+    case "DETELE_ACTIVITY":
+      return {
+        ...state,
+      };
+
+    case "SET_STATE_DETAIL":
+      return {
+        ...state,
+      };
+
     default:
       return {
         ...state,
+        countryDetail: {},
       };
   }
 }

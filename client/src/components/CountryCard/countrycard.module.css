@@ -1,18 +1,26 @@
 .card{
+    box-shadow: 1px 0.5px 7px 1.3px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: rgba(0, 0, 0, 0.539) solid 2px;
+    border: rgba(231, 229, 229, 0.548) solid 2px;
     border-radius: 35px;
+    font: 1em sans-serif;
+    /* color: rgba(245, 245, 245, 0.886); */
+    font-size: 17px;
     width: 250px;
     padding-top: 10px;
-    height: 320px;
+    height: 345px;
     margin-left: 50px;
-    background-color: rgba(52, 33, 3, 0.361);
     margin-bottom: 38px;
-    /* background: rgb(9,6,106);
-background: radial-gradient(circle, rgba(9,6,106,1) 27%, rgba(54,101,159,1) 90%); */
-/* background-color: rgba(39, 158, 158, 0.524); */
+    /* background: rgba(9, 6, 106, 0.792);
+    background: radial-gradient(circle, rgba(9, 6, 106, 0.822) 27%, rgba(54, 101, 159, 0.863) 90%);
+    background-color: rgba(39, 158, 158, 0.331);  */
+    /* background-color: #dbd8e377; */
+    /* background-color: #5C5470; */
+    /* background: rgba(85, 85, 85, 0.091);
+    background: linear-gradient(0deg, rgba(85, 85, 85, 0.178) 0%, rgba(232, 234, 240, 0.224) 34%, rgba(154, 155, 157, 0.849) 100%); */
+    background-color: #dbd8e387;
 
 }
 .card:hover{
@@ -21,9 +29,17 @@ background: radial-gradient(circle, rgba(9,6,106,1) 27%, rgba(54,101,159,1) 90%)
     transform: scale(1.1, 1.2);
 }
 
+.font{
+    /* text-shadow: 1px 1px 20px; */
+    /* color:#131018; */
+    /* color: rgba(245, 245, 245, 0.886); */
+    font-family: sans-serif;
+}
 .name{
     text-decoration: none;
-    color:black;
+    text-shadow: 3px;
+    /* color: rgba(245, 245, 245, 0.886); */
+    color: black;
     cursor: pointer;
 }
 

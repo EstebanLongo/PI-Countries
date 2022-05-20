@@ -71,21 +71,42 @@ export function setStateDetail() {
 
 export function createActivity(payload) {
   return async function (dispatch) {
-    const response = axios.post("http://localhost:3001/activity", payload);
-    // console.log('crear actividad: ', response);
-    return dispatch({
-      type: "POST_ACTIVITY",
-      payload: response.data
-    });
+    try {
+      const act = await axios.post("http://localhost:3001/activities", payload);
+      // console.log('crear actividad: ', response);
+      return act;
+    } catch (error) {
+      alert("Creation failed");
+      console.log(error);
+    }
   };
 }
 
 export function getActivities() {
   return async function (dispatch) {
-    let info = await axios("http://localhost:3001/activities", {});
+    let info = await axios.get("http://localhost:3001/activities");
     return dispatch({
       type: "GET_ACTIVITIES",
       payload: info.data,
     });
+  };
+}
+
+export function deleteActivity(payload) {
+  return async function (dispatch) {
+    try {
+      const deleteAct = axios.delete(
+        "http://localhost:3001/activities/" + payload
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function filterActivities(payload) {
+  return {
+    type: "FILTER_ACTIVITIES",
+    payload,
   };
 }

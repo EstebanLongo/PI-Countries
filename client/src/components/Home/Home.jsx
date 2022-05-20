@@ -7,7 +7,6 @@ import Paginate from "../Paginate/Paginate.jsx";
 import Population from "../Order/Population.jsx";
 import Continents from "../Filters/Continents.jsx";
 import ActivitiesFilter from "../Filters/ActivitiesFilter";
-
 import NavBar from "../NavBar/NavBar.jsx";
 import Name from "../Order/Name.jsx";
 import "./home.css";
@@ -27,7 +26,7 @@ export default function Home() {
     indexOfLastCountry
   );
 
-  const [order, setOrder] = useState("");
+  const [, setOrder] = useState("");
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -79,7 +78,7 @@ export default function Home() {
       </div>
 
       <div className="cardsHome">
-        {console.log("allcountries: ", allCountries)}
+        {/* {console.log("allcountries: ", allCountries)} */}
         {currentCountries
           ? currentCountries.map((el) => {
               return (

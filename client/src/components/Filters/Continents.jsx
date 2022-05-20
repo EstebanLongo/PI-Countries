@@ -26,7 +26,7 @@ export default function Continents({ setCurrentPage }) {
     <div className={styles.orders}>
       <span>Filter by continent</span>
       <br/>
-      <select onChange={(e) => handleFilterContinent(e)}>
+      <select onChange={(e) => handleFilterContinent(e)} className={styles.select}>
         <option value="All">All</option>
         <option value="Asia">Asia</option>
         <option value="South America">South America</option>

@@ -5,9 +5,9 @@ import {
   getActivities,
   getCountries,
 } from "../../redux/actions/index.js";
-import { Link, useHistory } from "react-router-dom";
-import "./form.css";
+import { useHistory } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar.jsx";
+import "./form.css";
 
 export function validate(input) {
   let errors = {};
@@ -21,18 +21,28 @@ export function validate(input) {
     input.difficulty > 5
   )
     errors.difficulty = "Difficulty should be a value between 1 and 5";
+
   if (!input.duration || isNaN(input.duration) !== false)
     errors.duration = "Duration must be a number";
   if (!errors.season) errors.season = "Must select a season";
+
+  if (input.countries.length === 0)
+    errors.countries = "Must select at least 1 country";
   return errors;
 }
 
 export default function Form() {
   const dispatch = useDispatch();
+  const history = useHistory();
+  //history me redirige a donde le pase(home)
   const activities = useSelector((state) => state.activities);
   const countries = useSelector((state) => state.countriesCopy);
-  //history me redirige a donde le pase(home)
-  const history = useHistory();
+
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    dispatch(getCountries());
+  }, [dispatch]);
 
   const [input, setInput] = useState({
     name: "",
@@ -42,12 +52,13 @@ export default function Form() {
     countries: [],
   });
 
-  const [errors, setErrors] = useState({
-    name: "Name required",
-    difficulty: "Difficulty required",
-    duration: "Duration required",
-    season: "Must select a season",
-  });
+  // const [errors, setErrors] = useState({
+  //   name: "Name required",
+  //   difficulty: "Difficulty must be a number",
+  //   duration: "Duration required",
+  //   season: "Must select a season",
+  //   countries: 'Select at least one country'
+  // });
 
   //cada vez que se ejecuta la funcion, al estado input le agrega el e.target.value
   function handleInputChange(e) {
@@ -55,7 +66,6 @@ export default function Form() {
       ...input,
       [e.target.name]: e.target.value,
     });
-    // console.log(input)
     setErrors(
       validate({
         ...input,
@@ -74,67 +84,74 @@ export default function Form() {
   }
 
   function handleSelect(e) {
+    e.preventDefault();
+    console.log("etarget: ", e.target.value);
     setInput({
       ...input,
-      activities: [...input.countries, e.target.value],
+      countries: [...input.countries, e.target.value],
     });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (
-      input.name === "" ||
-      input.duration === "" ||
-      input.season === "" ||
-      // !input.country ||
-      input.duration < 1
-    ) {
-      return alert("Please fill all fields");
-    } else {
-      dispatch(createActivity(input));
-      alert("Activity created succesfully!");
-      setInput({
-        name: "",
-        difficulty: "",
-        duration: "",
-        season: "",
-        countries: [],
-      });
-      history.push("/home");
-    }
+    // if (
+    //   input.name === "" ||
+    //   input.duration === "" ||
+    //   input.season === "" ||
+    //   // !input.countries ||
+    //   input.duration < 1
+    // ) {
+    // return alert("Please fill all fields");
+    // } else {
+    dispatch(createActivity(input));
+    alert("Activity created succesfully!");
+    setInput({
+      name: "",
+      difficulty: "",
+      duration: "",
+      season: "",
+      countries: [],
+    });
+    history.push("/home");
   }
 
-  useEffect(() => {
-    dispatch(getCountries());
-  }, [dispatch]);
+  function handleDelete(el) {
+    setInput({
+      ...input,
+      countries: input.countries.filter((e) => e !== el),
+    });
+  }
 
   return (
     <div className="formcontainer">
       <NavBar />
 
-      <h1>Create Activity</h1>
+      <h1 className="h1">Create Activity</h1>
 
       <form onSubmit={(e) => handleSubmit(e)} className="form">
         <img
           src="https://deportesriesgo.com/wp-content/uploads/Tipos-de-surf.jpg"
+          alt="img not found"
           className="img"
         />
 
         <div className="divlabels">
+          {errors.name && <p className="danger">{errors.name}</p>}
           <label className="label">Name:</label>
 
           <input
             type="text"
+            placeholder="Activity..."
             value={input.name}
             name="name"
             onChange={(e) => handleInputChange(e)}
             className="inputs"
           />
-          {errors.name && <p className="danger">{errors.name}</p>}
         </div>
 
         <div className="divlabels">
-          <label className="label">
+          {errors.difficulty && <p className="danger">{errors.difficulty}</p>}
+          <label className="labelD">
             Difficulty:
             <input
               type="number"
@@ -144,13 +161,13 @@ export default function Form() {
               name="difficulty"
               placeholder="1-5"
               onChange={(e) => handleInputChange(e)}
-              className="inputs"
+              className="inputsD"
             />
-            {errors.difficulty && <p className="danger">{errors.difficulty}</p>}
           </label>
         </div>
 
         <div className="divlabels">
+          {errors.duration && <p className="danger">{errors.duration}</p>}
           <label className="label">Duration:</label>
 
           <input
@@ -159,63 +176,74 @@ export default function Form() {
             value={input.duration}
             name="duration"
             onChange={(e) => handleInputChange(e)}
-            className={errors.duration && "danger"}
+            // className={errors.duration && "danger"}
+            className="inputs"
           />
         </div>
 
         <div>
-          <label className="season">Season:</label>
           {errors.season && <p className="danger">{errors.season}</p>}
+          <label className="season">Season:</label>
           <label>
             <input
               type="radio"
               name="check"
-              value="Verano"
-              onChange={handleCheck}
+              value="Summer"
+              onChange={(e) => handleCheck(e)}
             />
-            Verano
+            Summer
           </label>
 
           <label>
             <input
               type="radio"
               name="check"
-              value="Invierno"
-              onChange={handleCheck}
+              value="Winter"
+              onChange={(e) => handleCheck(e)}
             />
-            Invierno
+            Winter
           </label>
 
           <label>
             <input
               type="radio"
               name="check"
-              value="Otoño"
-              onChange={handleCheck}
+              value="Autumn"
+              onChange={(e) => handleCheck(e)}
             />
-            Otoño
+            Autumn
           </label>
 
           <label>
             <input
               type="radio"
               name="check"
-              value="Primavera"
-              onChange={handleCheck}
+              value="Spring"
+              onChange={(e) => handleCheck(e)}
             />
-            Primavera
+            Spring
           </label>
         </div>
 
         <div>
+          {errors.countries && <p className="danger">{errors.countries}</p>}
+
           <select onChange={(e) => handleSelect(e)}>
             <option value="country">Countries...</option>
-            {console.log("form countries: ", countries)}
 
             {countries.map((e) => (
               <option value={e.name}>{e.name}</option>
             ))}
           </select>
+
+          <br />
+          
+          {input.countries.map((el) => (
+            <button onClick={() => handleDelete(el)}>
+              {" "}
+              X<br /> {el}
+            </button>
+          ))}
         </div>
 
         <button type="submit" name="submit" className="box hvr-grow-shadow">

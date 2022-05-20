@@ -1,28 +1,37 @@
-.searchbar{
-    display: flex;
-    margin-top: 36px;
-    height: 30px;
-    margin-left: 15px;
+.searchbar {
+  display: flex;
+  margin-top: 36px;
+  height: 32px;
+  margin-left: 15px;
 }
 
+.input {
+  /* background-color: rgba(209, 203, 214, 0.69); */
+  /* background-color: rgba(110, 107, 112, 0.838); */
+    background-color: #DBD8E3;
 
-
-.input{
-    background-color: rgba(209, 203, 214, 0.69);
-    border-radius: 10px;
-    margin-right: 5px;
-    border: 2px solid;
-    box-shadow: 0px 2px 6px rgba(222, 216, 216, 0.856);
-    color: black;
+  border-radius: 10px;
+  margin-right: 5px;
+  border: 1px solid;
+  box-shadow: 3px 1px 7px rgba(168, 163, 163, 0.856);
+  color: black;
 }
 
-.button{
-    background-color: rgba(209, 203, 214, 0.831);
-    border-radius: 15px;
-    height: 32px;
-    width: 57px;
-    color: rgb(0, 0, 0);
-    border: 2px solid;
-    margin-top: 1px;
-    margin-left: 5px;
+.button {
+  /* background-color: rgba(209, 203, 214, 0.831); */
+  background-color: #DBD8E3;
+
+  border-radius: 15px;
+  height: 32px;
+  width: 70px;
+  color: rgb(0, 0, 0);
+  border: 2px solid;
+  margin-top: 1px;
+  margin-left: 5px;
+  cursor: pointer;
+  box-shadow: 3px 1px 7px rgba(168, 163, 163, 0.856);
+}
+
+.button:hover {
+  transform: scale(1.3);
 }

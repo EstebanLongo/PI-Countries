@@ -28,9 +28,9 @@ export default function Population({ setOrder, setCurrentPage }) {
   return (
     <div>
       <div className={styles.orders}>
-        Order by population
+        <span className={styles.pop}>Order by population</span>
         <br/>
-        <select onChange={(e) => handlePopulation(e)}>
+        <select className={styles.select} onChange={(e) => handlePopulation(e)}>
           <option value="default" key="default">
             All
           </option>
