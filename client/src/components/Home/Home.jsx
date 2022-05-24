@@ -1,7 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCountries } from "../../redux/actions";
+import {
+  filterByContinent,
+  getCountries,
+  orderAZ,
+  orderByPopulation,
+  filterActivities,
+} from "../../redux/actions";
 import CountryCard from "../CountryCard/CountryCard.jsx";
 import Paginate from "../Paginate/Paginate.jsx";
 import Population from "../Order/Population.jsx";
@@ -10,13 +16,13 @@ import ActivitiesFilter from "../Filters/ActivitiesFilter";
 import NavBar from "../NavBar/NavBar.jsx";
 import Name from "../Order/Name.jsx";
 import "./home.css";
+import Loading from "../Loading/Loading.jsx";
 
 export default function Home() {
-  //esto es para usar la const dispatch e ir despachando mis acciones
   const dispatch = useDispatch();
   //esto es lo mismo que hacer el mapStateToProps
   const allCountries = useSelector((state) => state.countries);
-
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [countriesPerPage] = useState(10);
   const indexOfLastCountry = currentPage * countriesPerPage;
@@ -34,6 +40,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getCountries());
+    dispatch(filterByContinent());
   }, [dispatch]);
 
   function handleClick(e) {
@@ -43,9 +50,10 @@ export default function Home() {
 
   return (
     <div className="home">
-      <NavBar setCurrentPage={setCurrentPage} />
+      <NavBar />
       <div>
-        <button className="reload"
+        <button
+          className="reload"
           onClick={(e) => {
             handleClick(e);
           }}
@@ -55,44 +63,48 @@ export default function Home() {
       </div>
 
       <div className="filters">
-
         <div>
           <Population setOrder={setOrder} setCurrentPage={setCurrentPage} />
         </div>
-          <br/>
+        <br />
 
         <div>
           <Name setOrder={setOrder} setCurrentPage={setCurrentPage} />
         </div>
-        <br/>
+        <br />
 
         <div>
           <Continents setCurrentPage={setCurrentPage} />
         </div>
-        <br/>
+        <br />
 
         <div>
           <ActivitiesFilter setCurrentPage={setCurrentPage} />
         </div>
-        <br/>        
+        <br />
       </div>
 
       <div className="cardsHome">
         {/* {console.log("allcountries: ", allCountries)} */}
-        {currentCountries
-          ? currentCountries.map((el) => {
-              return (
-                <div key={el.id}>
-                  <CountryCard
-                    id={el.cca3}
-                    name={el.name}
-                    continent={el.continent}
-                    flag={el.flag}
-                  />
-                </div>
-              );
-            })
-          : "Loading"}
+
+        {currentCountries.length === 0 ? (
+          <p className="imagenL">
+            (<Loading setLoading={setLoading} />)
+          </p>
+        ) : (
+          currentCountries.map((el) => {
+            return (
+              <div key={el.id}>
+                <CountryCard
+                  id={el.cca3}
+                  name={el.name}
+                  continent={el.continent}
+                  flag={el.flag}
+                />
+              </div>
+            );
+          })
+        )}
       </div>
 
       <Paginate

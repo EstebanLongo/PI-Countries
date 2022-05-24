@@ -21,26 +21,72 @@ function rootReducer(state = initialState, action) {
         countries: action.payload,
       };
 
-    case "ORDER_BY_POPULATION": {
-      const filterPopulation =
+    case "ORDER_BY_POPULATION":
+      if (action.payload === "All") {
+        return {
+          ...state,
+          countries: state.countriesCopy,
+        };
+      }
+      let orderByPp =
         action.payload === "asc"
-          ? state.countriesCopy.sort((a, b) => a.population - b.population)
-          : state.countriesCopy.sort((a, b) => b.population - a.population);
-      //console.log(action.payload);
+          ? state.countries.sort((a, b) => a.population - b.population)
+          : state.countries.sort((a, b) => {
+              if (a.population > b.population) {
+                return -1;
+              }
+              if (b.population > a.population) {
+                return 1;
+              }
+              return 0;
+            });
+
       return {
         ...state,
-        countries: filterPopulation,
+        countries: orderByPp,
       };
-    }
+
+    // case "ORDER_BY_NAME":
+    //   const orderByName =
+    //     action.payload === "az"
+    //       ? state.countriesCopy.sort((a, b) => a.name.localeCompare(b.name))
+    //       : state.countriesCopy.sort((a, b) => b.name.localeCompare(a.name));
+    //   return {
+    //     ...state,
+    //     countries: orderByName,
+    //   };
 
     case "ORDER_BY_NAME":
-      const orderByName =
+      if (action.payload === "All") {
+        return {
+          ...state,
+          countries: state.countriesCopy,
+        };
+      }
+
+      let orderByNm =
         action.payload === "az"
-          ? state.countriesCopy.sort((a, b) => a.name.localeCompare(b.name))
-          : state.countriesCopy.sort((a, b) => b.name.localeCompare(a.name));
+          ? state.countries.sort((a, b) => {
+              if (a.name < b.name) {
+                return -1;
+              }
+              if (a.name > b.name) {
+                return 1;
+              }
+              return 0;
+            })
+          : state.countries.sort((a, b) => {
+              if (a.name < b.name) {
+                return 1;
+              }
+              if (a.name > b.name) {
+                return -1;
+              }
+              return 0;
+            });
       return {
         ...state,
-        countries: orderByName,
+        countries: orderByNm,
       };
 
     case "FILTER_BY_CONTINENT":
@@ -93,6 +139,7 @@ function rootReducer(state = initialState, action) {
     case "SET_STATE_DETAIL":
       return {
         ...state,
+        countryDetail: {},
       };
 
     default:

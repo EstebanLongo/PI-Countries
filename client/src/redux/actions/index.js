@@ -8,6 +8,15 @@ export function getCountries() {
       payload: countries.data,
     });
   };
+  // return function (dispatch){
+  //   axios.get("http://localhost:3001/countries")
+  //     .then(countries => {
+  //       dispatch({
+  //         type: "GET_COUNTRIES",
+  //         payload: countries.data,
+  //       })
+  //     })
+  // }
 }
 
 export function orderAZ(payload) {
@@ -18,15 +27,19 @@ export function orderAZ(payload) {
 }
 
 export function orderByPopulation(payload) {
-  // console.log(payload);
   return {
     type: "ORDER_BY_POPULATION",
     payload,
   };
 }
 
+// export function orderByPopulation(tipo) {
+//   return {
+//     type: tipo === "asc" ? "ORDEN_POBLACION_ASC" : "ORDEN_POBLACION_DESC",
+//   };
+// }
+
 export function filterByContinent(payload) {
-  // console.log(payload);
   return {
     type: "FILTER_BY_CONTINENT",
     payload,
@@ -47,6 +60,15 @@ export function getNameCountry(name) {
       console.log(error);
     }
   };
+  // return function(dispatch){
+  //   axios.get("http://localhost:3001/countries?name=" + name)
+  //     .then((country) =>{
+  //       dispatch({
+  //         type: "SEARCH_COUNTRY_NAME",
+  //         payload: country.data
+  //       })
+  //     })
+  // }
 }
 
 export function getDetail(id) {
@@ -61,19 +83,21 @@ export function getDetail(id) {
       console.log(error);
     }
   };
-}
-
-export function setStateDetail() {
-  return {
-    type: "SET_DETAIL",
-  };
+  // return function (dispatch){
+  //   axios.get("http://localhost:3001/countries/" + id)
+  //   .then(response =>{
+  //     dispatch({
+  //       type: "GET_DETAIL",
+  //       payload: response.data
+  //     })
+  //   })
+  // }
 }
 
 export function createActivity(payload) {
   return async function (dispatch) {
     try {
       const act = await axios.post("http://localhost:3001/activities", payload);
-      // console.log('crear actividad: ', response);
       return act;
     } catch (error) {
       alert("Creation failed");
@@ -108,5 +132,11 @@ export function filterActivities(payload) {
   return {
     type: "FILTER_ACTIVITIES",
     payload,
+  };
+}
+
+export function setStateDetail() {
+  return {
+    type: "SET_DETAIL",
   };
 }

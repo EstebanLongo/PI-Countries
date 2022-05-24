@@ -1,5 +1,5 @@
 .backDetail {
-  background-color: rgba(0, 0, 0, 0.898);
+  background-color: #2a2438;
   height: 180vh;
   margin-bottom: -30px;
 }
@@ -29,6 +29,7 @@
   color: rgba(245, 245, 220, 0.848);
   font-size: 40px;
   text-decoration: underline 3px;
+  margin-bottom: 50px;
 }
 
 .countryInfo {
@@ -146,4 +147,18 @@
 }
 .btn:hover {
   box-shadow: 0 0 40px 40px #e74c3c inset;
+}
+
+.iconHome{
+  height: 40px;
+  display: flex;
+  margin-top: 30px;
+  margin-left: 70px;
+}
+
+.nav{
+  background-color:rgba(16, 15, 15, 0.975);
+  display: flex;
+  height: 90px;
+  justify-content: space-arond;
 }

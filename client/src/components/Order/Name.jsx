@@ -6,7 +6,7 @@ import {
   orderAZ,
   orderByPopulation,
 } from "../../redux/actions";
-import styles from './orders.module.css'
+import styles from "./orders.module.css";
 
 export default function Name({ setOrder, setCurrentPage }) {
   const dispatch = useDispatch();
@@ -26,13 +26,12 @@ export default function Name({ setOrder, setCurrentPage }) {
 
   useEffect(() => {
     dispatch(filterByContinent());
-    dispatch(orderByPopulation());
   }, [dispatch]);
 
   return (
     <div className={styles.orders}>
       <span>Order by name</span>
-      <br/>
+      <br />
       <select onChange={(e) => handleName(e)} className={styles.select}>
         <option value="All">All</option>
         <option value="az">A-Z</option>

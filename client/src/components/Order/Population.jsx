@@ -1,8 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getCountries, filterByContinent, orderByPopulation, orderAZ } from "../../redux/actions";
-// import { orderByPopulation } from "../../redux/actions";
-import styles from './orders.module.css'
+import {
+  getCountries,
+  filterByContinent,
+  orderByPopulation,
+  orderAZ,
+} from "../../redux/actions";
+import styles from "./orders.module.css";
 
 export default function Population({ setOrder, setCurrentPage }) {
   const dispatch = useDispatch();
@@ -20,16 +24,17 @@ export default function Population({ setOrder, setCurrentPage }) {
     }
   }
 
-  useEffect(() => {
-    dispatch(filterByContinent())
-    dispatch(orderAZ());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   return () => {
+  //     dispatch(orderAZ());
+  //   };
+  // }, [dispatch]);
 
   return (
     <div>
       <div className={styles.orders}>
         <span className={styles.pop}>Order by population</span>
-        <br/>
+        <br />
         <select className={styles.select} onChange={(e) => handlePopulation(e)}>
           <option value="default" key="default">
             All

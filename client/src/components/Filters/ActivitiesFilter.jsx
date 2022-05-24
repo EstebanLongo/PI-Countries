@@ -1,13 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  deleteActivity,
-  filterActivities,
-  getActivities,
-} from "../../redux/actions";
+import { filterActivities, getActivities } from "../../redux/actions";
 import styles from "./filters.module.css";
 
-export default function ActtivitiesFilter({ setCurrentPage }) {
+export default function ActivitiesFilter({ setCurrentPage }) {
   const dispatch = useDispatch();
   const activity = useSelector((state) => state.activities);
 
@@ -20,7 +16,6 @@ export default function ActtivitiesFilter({ setCurrentPage }) {
     e.preventDefault();
     dispatch(filterActivities(e.target.value));
     setCurrentPage(1);
-    console.log(e.target.value);
   }
 
   return (

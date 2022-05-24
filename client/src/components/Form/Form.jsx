@@ -5,29 +5,28 @@ import {
   getActivities,
   getCountries,
 } from "../../redux/actions/index.js";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar.jsx";
 import "./form.css";
 
 export function validate(input) {
   let errors = {};
 
-  if (!input.name) errors.name = "Name required";
-  if (isNaN(input.name) !== true) errors.name = "Name cannot be a number";
-  if (
+  if (!input.name) {
+    errors.name = "Name required";
+  } else if (isNaN(input.name) !== true) {
+    errors.name = "Name cannot be a number";
+  } else if (
     !input.difficulty ||
     isNaN(input.difficulty) !== false ||
     input.difficulty < 1 ||
     input.difficulty > 5
-  )
-    errors.difficulty = "Difficulty should be a value between 1 and 5";
-
-  if (!input.duration || isNaN(input.duration) !== false)
+  ) {
+    errors.difficulty = "Must be a value between 1-5";
+  } else if (!input.duration || isNaN(input.duration) !== false) {
     errors.duration = "Duration must be a number";
-  if (!errors.season) errors.season = "Must select a season";
+  }
 
-  if (input.countries.length === 0)
-    errors.countries = "Must select at least 1 country";
   return errors;
 }
 
@@ -39,6 +38,7 @@ export default function Form() {
   const countries = useSelector((state) => state.countriesCopy);
 
   const [errors, setErrors] = useState({});
+  // const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
     dispatch(getCountries());
@@ -51,14 +51,6 @@ export default function Form() {
     season: "",
     countries: [],
   });
-
-  // const [errors, setErrors] = useState({
-  //   name: "Name required",
-  //   difficulty: "Difficulty must be a number",
-  //   duration: "Duration required",
-  //   season: "Must select a season",
-  //   countries: 'Select at least one country'
-  // });
 
   //cada vez que se ejecuta la funcion, al estado input le agrega el e.target.value
   function handleInputChange(e) {
@@ -85,34 +77,40 @@ export default function Form() {
 
   function handleSelect(e) {
     e.preventDefault();
-    console.log("etarget: ", e.target.value);
-    setInput({
-      ...input,
-      countries: [...input.countries, e.target.value],
-    });
+    if (
+      !input.countries.includes(e.target.value) &&
+      e.target.value !== "country"
+    ) {
+      setInput({
+        ...input,
+        countries: [...input.countries, e.target.value],
+      });
+    }
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    // if (
-    //   input.name === "" ||
-    //   input.duration === "" ||
-    //   input.season === "" ||
-    //   // !input.countries ||
-    //   input.duration < 1
-    // ) {
-    // return alert("Please fill all fields");
-    // } else {
-    dispatch(createActivity(input));
-    alert("Activity created succesfully!");
-    setInput({
-      name: "",
-      difficulty: "",
-      duration: "",
-      season: "",
-      countries: [],
-    });
-    history.push("/home");
+    setErrors(validate(input));
+    const errorsSaved = validate(input);
+
+    if (
+      Object.values(errorsSaved).length !== 0 ||
+      !input.countries.length ||
+      !input.season
+    ) {
+      alert("Please fill all fields");
+    } else {
+      dispatch(createActivity(input));
+      alert("Activity created succesfully!");
+      setInput({
+        name: "",
+        difficulty: "",
+        duration: "",
+        season: "",
+        countries: [],
+      });
+      history.push("/home");
+    }
   }
 
   function handleDelete(el) {
@@ -124,7 +122,11 @@ export default function Form() {
 
   return (
     <div className="formcontainer">
-      <NavBar />
+      <nav className="nav">
+        <Link to="/home" className="iconHome">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAAzklEQVRYhe2TSw7DIAxEocoVipojJsdtFjnO6wYklJhvoGyYFcLYMx5jpSYeADCAGUX+Br7ACayjyB3+J8Laflji43LuO45L5yfwEe76OCGRR2KrvQegK3lMRBMBwsyDcxbePhOQ03kip15ASeeJXIq3o6bzjBp529GCvFrEY+vCNR3Co2z2eeTaPmQngN1T2UuAq72HHm6+ZRnd3JDIMcDmx3QoQSmltNa3eMqZWI4UW2LFSohqR/aqFdAKU8AUMFxAdA1rVqs0Z7gDExM/bjc+TKNeTBQAAAAASUVORK5CYII=" />
+        </Link>
+      </nav>
 
       <h1 className="h1">Create Activity</h1>
 
@@ -176,8 +178,7 @@ export default function Form() {
             value={input.duration}
             name="duration"
             onChange={(e) => handleInputChange(e)}
-            // className={errors.duration && "danger"}
-            className="inputs"
+            className="inputsD"
           />
         </div>
 
@@ -235,20 +236,22 @@ export default function Form() {
               <option value={e.name}>{e.name}</option>
             ))}
           </select>
-
           <br />
-          
-          {input.countries.map((el) => (
-            <button onClick={() => handleDelete(el)}>
-              {" "}
-              X<br /> {el}
-            </button>
-          ))}
         </div>
 
-        <button type="submit" name="submit" className="box hvr-grow-shadow">
-          Create Activity!
-        </button>
+        {input.countries.map((el) => (
+          <button className="countrybtn" onClick={() => handleDelete(el)}>
+            {el} | X
+          </button>
+        ))}
+
+        <div>
+          <p>
+            <button type="submit" name="submit" className="box hvr-grow-shadow">
+              Create Activity!
+            </button>
+          </p>
+        </div>
       </form>
     </div>
   );

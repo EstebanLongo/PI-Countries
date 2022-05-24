@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getDetail,
   deleteActivity,
   filterActivities,
-  getActivities,
+  setStateDetail,
 } from "../../redux/actions";
 import styles from "./countrydetail.module.css";
 import NavBar from "../../components/NavBar/NavBar.jsx";
@@ -20,18 +20,19 @@ export default function CountryDetail() {
 
   useEffect(() => {
     dispatch(getDetail(id));
+    return () => {
+      dispatch(setStateDetail());
+    };
   }, [dispatch, id]);
 
   function handleChange(e) {
     e.preventDefault();
     setName(e.target.value);
-    console.log("Change eVALUE: ", e.target.value);
   }
 
   function handleDelete(e) {
     if (name !== "All") {
       dispatch(deleteActivity(name));
-      console.log("EVALUE: ", name);
       alert("Activity deleted succesfully");
       setName("");
       history.push("/home");
@@ -42,7 +43,11 @@ export default function CountryDetail() {
 
   return (
     <div>
-      <NavBar />
+      <nav className={styles.nav}>
+      <Link to="/home" className={styles.iconHome}>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAAzklEQVRYhe2TSw7DIAxEocoVipojJsdtFjnO6wYklJhvoGyYFcLYMx5jpSYeADCAGUX+Br7ACayjyB3+J8Laflji43LuO45L5yfwEe76OCGRR2KrvQegK3lMRBMBwsyDcxbePhOQ03kip15ASeeJXIq3o6bzjBp529GCvFrEY+vCNR3Co2z2eeTaPmQngN1T2UuAq72HHm6+ZRnd3JDIMcDmx3QoQSmltNa3eMqZWI4UW2LFSohqR/aqFdAKU8AUMFxAdA1rVqs0Z7gDExM/bjc+TKNeTBQAAAAASUVORK5CYII=" />
+      </Link>
+      </nav>
 
       {countryD.length > 0 && (
         <div className={styles.backDetail}>

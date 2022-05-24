@@ -1,8 +1,9 @@
 .navbar{
     /* background-color: rgba(30, 19, 19, 0.756); */
-    background-color:rgba(0, 0, 0, 0.929);
+    background-color:rgba(16, 15, 15, 0.975);
     display: flex;
     height: 90px;
+    justify-content: space-arond;
 }
 
 .iconHome{
@@ -13,9 +14,9 @@
 }
 
 .iconForm{
-    height: 45px;
+    height: 75px;
     display: flex;
-    margin-top: 28px;
+    margin-top: 14px;
     margin-left: 15px;
 }
 

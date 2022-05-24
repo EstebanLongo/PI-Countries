@@ -1,39 +1,45 @@
-.fondo{
-    background-image: url("https://previews.123rf.com/images/kunilanskap/kunilanskap1908/kunilanskap190800001/128299955-travel-concept-background-overhead-view-of-traveler-s-accessories-on-old-vintage-map.jpg");
-
-    /* background-image: url("https://st2.depositphotos.com/4327059/7728/v/950/depositphotos_77281464-stock-illustration-travel-and-tourism-background.jpg"); */
-    background-position: center center;
-    padding: 0%;
-    height: 100vh;
-    display: flex;
-    background-size: cover;
+.fondo {
+  background-image: url("https://previews.123rf.com/images/kunilanskap/kunilanskap1908/kunilanskap190800001/128299955-travel-concept-background-overhead-view-of-traveler-s-accessories-on-old-vintage-map.jpg");
+  /* background-image: url("https://st2.depositphotos.com/4327059/7728/v/950/depositphotos_77281464-stock-illustration-travel-and-tourism-background.jpg"); */
+  background-position: center center;
+  padding: 0%;
+  height: 100vh;
+  display: flex;
+  background-size: cover;
+  margin-bottom: -25px;
 }
 
 .title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 590px;
-    margin-top: 50px;
-    font-size: 70px;
-    margin-bottom: 80%;
-    box-shadow: -32px -3px 158px 76px rgba(255, 255, 255, 0.75);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
-  }
+  margin: 0 auto;
+  margin-top: 250px;
+  font-size: 70px;
+  color: #ccc;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  text-shadow: 2px 0 0 #191818, -2px 0 0 #191818, 0 2px 0 #191818,
+    0 -2px 0 #191818, 1px 1px #191818, -1px -1px 0 #191818, 1px -1px 0 #191818,
+    -1px 1px 0 #191818;
+}
 
-  .btn{
-    position: absolute;
-    top: 75%;
-    left: 38%;
-    margin: 25px 0 0 35px;
-    border-radius: 10px;
-    border: 1px solid rgba(125, 110, 110, 0.799);
-    padding: 20px 165px;
-    cursor: pointer;
-    transition-duration: 0.4s;
-    font-weight:bold;
-    background-color: rgba(38, 38, 38, 0.888);
-    color:rgba(255, 250, 250, 0.925);
-    font-size: 20px;
-  }
-  
+.btn {
+  position: absolute;
+  color: #fff;
+  transition-duration: 0.5s;
+  border-radius: 15px;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  background-color: #365b77;
+  border: none;
+  padding: 15px 32px;
+  font-size: 16px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.btn:hover {
+  background: #318aac;
+  color: #fff !important;
+}

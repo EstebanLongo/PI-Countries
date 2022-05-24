@@ -18,15 +18,15 @@
     background-color: rgba(39, 158, 158, 0.331);  */
     /* background-color: #dbd8e377; */
     /* background-color: #5C5470; */
-    /* background: rgba(85, 85, 85, 0.091);
-    background: linear-gradient(0deg, rgba(85, 85, 85, 0.178) 0%, rgba(232, 234, 240, 0.224) 34%, rgba(154, 155, 157, 0.849) 100%); */
-    background-color: #dbd8e387;
+    background: rgba(85, 85, 85, 0.402);
+    background: linear-gradient(0deg, rgba(85, 85, 85, 0.349) 0%, rgba(232, 234, 240, 0.482) 34%, rgba(154, 155, 157, 0.849) 100%);
+    /* background-color: #dbd8e387; */
 
 }
 .card:hover{
     box-shadow: 12px 20px 35px rgba(0,0,0,0.3);
     transition: opacity 0.8s ease-out;
-    transform: scale(1.1, 1.2);
+    transform: scale(1.1, 1.1);
 }
 
 .font{

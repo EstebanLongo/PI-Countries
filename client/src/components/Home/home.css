@@ -61,3 +61,10 @@
   background: rgba(250, 235, 215, 0.813);
   color: #fff !important;
 }
+
+.imagenL{
+  background-color: rgba(255, 255, 255, 0);
+  position: relative;
+  top: -100px;
+  left: 100px;
+}

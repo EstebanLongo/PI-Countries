@@ -5,7 +5,7 @@ import {
   orderAZ,
   orderByPopulation,
 } from "../../redux/actions";
-import styles from './filters.module.css'
+import styles from "./filters.module.css";
 
 export default function Continents({ setCurrentPage }) {
   const dispatch = useDispatch();
@@ -14,19 +14,21 @@ export default function Continents({ setCurrentPage }) {
     e.preventDefault();
     dispatch(filterByContinent(e.target.value));
     setCurrentPage(1);
-    console.log(e.target.value);
   }
 
-  useEffect(() => {
-    dispatch(orderByPopulation());
-    dispatch(orderAZ());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(orderAZ());
+  //   dispatch(orderByPopulation());
+  // }, [dispatch]);
 
   return (
     <div className={styles.orders}>
       <span>Filter by continent</span>
-      <br/>
-      <select onChange={(e) => handleFilterContinent(e)} className={styles.select}>
+      <br />
+      <select
+        onChange={(e) => handleFilterContinent(e)}
+        className={styles.select}
+      >
         <option value="All">All</option>
         <option value="Asia">Asia</option>
         <option value="South America">South America</option>
