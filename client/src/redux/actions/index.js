@@ -33,12 +33,6 @@ export function orderByPopulation(payload) {
   };
 }
 
-// export function orderByPopulation(tipo) {
-//   return {
-//     type: tipo === "asc" ? "ORDEN_POBLACION_ASC" : "ORDEN_POBLACION_DESC",
-//   };
-// }
-
 export function filterByContinent(payload) {
   return {
     type: "FILTER_BY_CONTINENT",
@@ -119,9 +113,7 @@ export function getActivities() {
 export function deleteActivity(payload) {
   return async function (dispatch) {
     try {
-      const deleteAct = axios.delete(
-        "http://localhost:3001/activities/" + payload
-      );
+      axios.delete("http://localhost:3001/activities/" + payload);
     } catch (error) {
       console.log(error);
     }

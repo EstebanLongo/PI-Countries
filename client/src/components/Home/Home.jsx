@@ -4,9 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   filterByContinent,
   getCountries,
-  orderAZ,
-  orderByPopulation,
-  filterActivities,
 } from "../../redux/actions";
 import CountryCard from "../CountryCard/CountryCard.jsx";
 import Paginate from "../Paginate/Paginate.jsx";
@@ -88,9 +85,9 @@ export default function Home() {
         {/* {console.log("allcountries: ", allCountries)} */}
 
         {currentCountries.length === 0 ? (
-          <p className="imagenL">
+          <div className="imagenL">
             (<Loading setLoading={setLoading} />)
-          </p>
+          </div>
         ) : (
           currentCountries.map((el) => {
             return (

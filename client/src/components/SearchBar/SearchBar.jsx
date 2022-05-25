@@ -1,14 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { getNameCountry } from "../../redux/actions";
 import styles from "./searchbar.module.css";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
-  const history = useHistory();
 
   function handleInputChange(e) {
     e.preventDefault();

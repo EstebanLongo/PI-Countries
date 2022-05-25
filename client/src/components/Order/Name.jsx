@@ -4,7 +4,6 @@ import {
   getCountries,
   filterByContinent,
   orderAZ,
-  orderByPopulation,
 } from "../../redux/actions";
 import styles from "./orders.module.css";
 

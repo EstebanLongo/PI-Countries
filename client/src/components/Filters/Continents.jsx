@@ -1,10 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-import {
-  filterByContinent,
-  orderAZ,
-  orderByPopulation,
-} from "../../redux/actions";
+import { filterByContinent } from "../../redux/actions";
 import styles from "./filters.module.css";
 
 export default function Continents({ setCurrentPage }) {

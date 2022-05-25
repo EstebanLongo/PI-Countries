@@ -46,16 +46,6 @@ function rootReducer(state = initialState, action) {
         countries: orderByPp,
       };
 
-    // case "ORDER_BY_NAME":
-    //   const orderByName =
-    //     action.payload === "az"
-    //       ? state.countriesCopy.sort((a, b) => a.name.localeCompare(b.name))
-    //       : state.countriesCopy.sort((a, b) => b.name.localeCompare(a.name));
-    //   return {
-    //     ...state,
-    //     countries: orderByName,
-    //   };
-
     case "ORDER_BY_NAME":
       if (action.payload === "All") {
         return {
@@ -108,7 +98,7 @@ function rootReducer(state = initialState, action) {
           : filterByAct.filter((a) =>
               a.activities.map((a) => a.name).includes(action.payload)
             );
-      console.log("ACT: ", actFiltered);
+      // console.log("ACT: ", actFiltered);
       return {
         ...state,
         countries: actFiltered,

@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  createActivity,
-  getActivities,
-  getCountries,
-} from "../../redux/actions/index.js";
+import { createActivity, getCountries } from "../../redux/actions/index.js";
 import { useHistory, Link } from "react-router-dom";
-import NavBar from "../../components/NavBar/NavBar.jsx";
 import "./form.css";
 
 export function validate(input) {
@@ -124,7 +119,10 @@ export default function Form() {
     <div className="formcontainer">
       <nav className="nav">
         <Link to="/home" className="iconHome">
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAAzklEQVRYhe2TSw7DIAxEocoVipojJsdtFjnO6wYklJhvoGyYFcLYMx5jpSYeADCAGUX+Br7ACayjyB3+J8Laflji43LuO45L5yfwEe76OCGRR2KrvQegK3lMRBMBwsyDcxbePhOQ03kip15ASeeJXIq3o6bzjBp529GCvFrEY+vCNR3Co2z2eeTaPmQngN1T2UuAq72HHm6+ZRnd3JDIMcDmx3QoQSmltNa3eMqZWI4UW2LFSohqR/aqFdAKU8AUMFxAdA1rVqs0Z7gDExM/bjc+TKNeTBQAAAAASUVORK5CYII=" />
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAAzklEQVRYhe2TSw7DIAxEocoVipojJsdtFjnO6wYklJhvoGyYFcLYMx5jpSYeADCAGUX+Br7ACayjyB3+J8Laflji43LuO45L5yfwEe76OCGRR2KrvQegK3lMRBMBwsyDcxbePhOQ03kip15ASeeJXIq3o6bzjBp529GCvFrEY+vCNR3Co2z2eeTaPmQngN1T2UuAq72HHm6+ZRnd3JDIMcDmx3QoQSmltNa3eMqZWI4UW2LFSohqR/aqFdAKU8AUMFxAdA1rVqs0Z7gDExM/bjc+TKNeTBQAAAAASUVORK5CYII="
+            alt="img not found"
+          />
         </Link>
       </nav>
 

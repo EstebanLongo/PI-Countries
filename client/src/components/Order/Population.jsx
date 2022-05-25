@@ -1,11 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-import {
-  getCountries,
-  filterByContinent,
-  orderByPopulation,
-  orderAZ,
-} from "../../redux/actions";
+import { getCountries, orderByPopulation } from "../../redux/actions";
 import styles from "./orders.module.css";
 
 export default function Population({ setOrder, setCurrentPage }) {
@@ -23,12 +18,6 @@ export default function Population({ setOrder, setCurrentPage }) {
       setOrder(e.target.value);
     }
   }
-
-  // useEffect(() => {
-  //   return () => {
-  //     dispatch(orderAZ());
-  //   };
-  // }, [dispatch]);
 
   return (
     <div>
