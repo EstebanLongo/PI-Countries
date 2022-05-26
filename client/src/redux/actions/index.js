@@ -8,15 +8,6 @@ export function getCountries() {
       payload: countries.data,
     });
   };
-  // return function (dispatch){
-  //   axios.get("http://localhost:3001/countries")
-  //     .then(countries => {
-  //       dispatch({
-  //         type: "GET_COUNTRIES",
-  //         payload: countries.data,
-  //       })
-  //     })
-  // }
 }
 
 export function orderAZ(payload) {
@@ -39,14 +30,16 @@ export function filterByContinent(payload) {
     payload,
   };
 }
-
+// en vez de recibir el name recibe el continent
 export function getNameCountry(name) {
   return async function (dispatch) {
     try {
       let countryName = await axios.get(
+        //en vez del + name iria el continent
         "http://localhost:3001/countries?name=" + name
       );
       return dispatch({
+        //"SEARCH_CONTINENT_NAME"
         type: "SEARCH_COUNTRY_NAME",
         payload: countryName.data,
       });
@@ -54,15 +47,6 @@ export function getNameCountry(name) {
       console.log(error);
     }
   };
-  // return function(dispatch){
-  //   axios.get("http://localhost:3001/countries?name=" + name)
-  //     .then((country) =>{
-  //       dispatch({
-  //         type: "SEARCH_COUNTRY_NAME",
-  //         payload: country.data
-  //       })
-  //     })
-  // }
 }
 
 export function getDetail(id) {

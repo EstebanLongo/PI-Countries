@@ -15,8 +15,10 @@ export default function SearchBar() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(getNameCountry(name)); //name es el estado local
-    setName("");
+    if (name.length === 0) alert ('Type name of country')
+    if (isNaN(name) !== true) alert ('Country name cannot be a number')
+      dispatch(getNameCountry(name)); //name es el estado local
+      setName("");
     // setCurrentPage(1)
   }
 

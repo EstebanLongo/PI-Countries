@@ -29,7 +29,7 @@ export default function ActivitiesFilter({ setCurrentPage }) {
         <option value="All">All</option>
         {activity.length &&
           activity.map((el) => {
-            return <option value={el.name}>{el.name}</option>;
+            return <option key={el.name} value={el.name}>{el.name}</option>;
           })}
       </select>
     </div>

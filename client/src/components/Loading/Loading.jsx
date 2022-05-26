@@ -6,7 +6,7 @@ export default function Loading({ setLoading }) {
       <div>
         <img
           src="https://cdn.dribbble.com/users/940782/screenshots/3533101/plane-loader-slower.gif"
-          alt=""
+          alt="img not found"
         />
       </div>
       <div>

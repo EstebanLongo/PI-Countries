@@ -33,7 +33,6 @@ export default function Form() {
   const countries = useSelector((state) => state.countriesCopy);
 
   const [errors, setErrors] = useState({});
-  // const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
     dispatch(getCountries());
@@ -231,24 +230,31 @@ export default function Form() {
             <option value="country">Countries...</option>
 
             {countries.map((e) => (
-              <option value={e.name}>{e.name}</option>
+              <option key={e.name} value={e.name}>
+                {e.name}
+              </option>
             ))}
           </select>
           <br />
         </div>
 
         {input.countries.map((el) => (
-          <button className="countrybtn" onClick={() => handleDelete(el)}>
+          <button
+            key={el.name}
+            type="button"
+            className="countrybtn"
+            onClick={() => handleDelete(el)}
+          >
             {el} | X
           </button>
         ))}
 
         <div>
-          <p>
+          <div>
             <button type="submit" name="submit" className="box hvr-grow-shadow">
               Create Activity!
             </button>
-          </p>
+          </div>
         </div>
       </form>
     </div>

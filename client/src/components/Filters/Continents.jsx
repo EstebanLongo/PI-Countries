@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filterByContinent } from "../../redux/actions";
 import styles from "./filters.module.css";
 
@@ -11,11 +11,6 @@ export default function Continents({ setCurrentPage }) {
     dispatch(filterByContinent(e.target.value));
     setCurrentPage(1);
   }
-
-  // useEffect(() => {
-  //   dispatch(orderAZ());
-  //   dispatch(orderByPopulation());
-  // }, [dispatch]);
 
   return (
     <div className={styles.orders}>

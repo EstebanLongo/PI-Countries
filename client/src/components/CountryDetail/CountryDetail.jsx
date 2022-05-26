@@ -136,7 +136,7 @@ export default function CountryDetail() {
                     ? countryD[0].activities.map((el) => {
                         return (
                           <>
-                            <option value={el.name}> {el.name} </option>
+                            <option key={el.name} value={el.name}> {el.name} </option>
                           </>
                         );
                       })
