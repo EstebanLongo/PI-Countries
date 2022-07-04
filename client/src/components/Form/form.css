@@ -1,8 +1,5 @@
 .formcontainer {
-  /* background: rgb(54,101,159);
-    background: linear-gradient(356deg, rgba(54,101,159,1) 0%, rgba(9,6,106,1) 100%); */
-  /* background-color: rgba(250, 229, 202, 0.918); */
-  background-color: #2A2438;
+  background-color: rgba(250, 229, 202, 0.918);
   height: 1000px;
   margin-bottom: -30px;
 }
@@ -17,10 +14,10 @@ p.danger {
 .h1 {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  text-shadow: 2px 0 0 #191818, -2px 0 0 #191818, 0 2px 0 #191818,
+  /* text-shadow: 2px 0 0 #191818, -2px 0 0 #191818, 0 2px 0 #191818,
     0 -2px 0 #191818, 1px 1px #191818, -1px -1px 0 #191818, 1px -1px 0 #191818,
-    -1px 1px 0 #191818;
-  color: #dbd8e3eb;
+    -1px 1px 0 #191818; */
+  color: #353338eb;
   font-size: 45px;
   font-stretch: extra-expanded;
   margin: 40px 30px;
@@ -30,8 +27,8 @@ p.danger {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background-color: rgba(39, 158, 158, 0.683); */
-  background-color: #dbd8e3c1;
+  background-color: rgba(39, 158, 158, 0.683);
+  /* background-color: #dbd8e3c1; */
   border-top-right-radius: 100px;
   border-bottom-left-radius: 100px;
   border: 2px solid rgb(206, 198, 192);

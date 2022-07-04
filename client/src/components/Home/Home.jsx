@@ -86,7 +86,7 @@ export default function Home() {
 
       <div className="cardsHome">
         {currentCountries.length === 0 ? (
-          <Loading setLoading={setLoading} />
+          <Loading setLoading={setLoading} className='loader'/>
         ) : (
           currentCountries.map((el) => {
             return (

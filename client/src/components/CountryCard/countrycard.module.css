@@ -13,15 +13,8 @@
     height: 345px;
     margin-left: 50px;
     margin-bottom: 38px;
-    /* background: rgba(9, 6, 106, 0.792);
-    background: radial-gradient(circle, rgba(9, 6, 106, 0.822) 27%, rgba(54, 101, 159, 0.863) 90%);
-    background-color: rgba(39, 158, 158, 0.331);  */
-    /* background-color: #dbd8e377; */
-    /* background-color: #5C5470; */
-    background: rgba(85, 85, 85, 0.402);
+    background: rgba(85, 85, 85, 0.285);
     background: linear-gradient(0deg, rgba(85, 85, 85, 0.349) 0%, rgba(232, 234, 240, 0.482) 34%, rgba(154, 155, 157, 0.849) 100%);
-    /* background-color: #dbd8e387; */
-
 }
 .card:hover{
     box-shadow: 12px 20px 35px rgba(0,0,0,0.3);
@@ -30,11 +23,9 @@
 }
 
 .font{
-    /* text-shadow: 1px 1px 20px; */
-    /* color:#131018; */
-    /* color: rgba(245, 245, 245, 0.886); */
     font-family: sans-serif;
 }
+
 .name{
     text-decoration: none;
     text-shadow: 3px;

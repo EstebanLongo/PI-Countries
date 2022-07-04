@@ -1,19 +1,11 @@
 import React from "react";
+import style from './Loading.module.css'
 
 export default function Loading({ setLoading }) {
   return (
-    <div>
-      <div>
-        <img
-          src="https://cdn.dribbble.com/users/940782/screenshots/3533101/plane-loader-slower.gif"
-          alt="img not found"
-        />
-      </div>
-      <div>
-        {setTimeout(() => {
-          setLoading(false);
-        }, 5000)}
-      </div>
+    <div className={style.container}>
+      <div className={style.spinner}></div>
+      <h3 className={style.loading}>🔍​ Un momento...</h3>
     </div>
-  );
+  )
 }

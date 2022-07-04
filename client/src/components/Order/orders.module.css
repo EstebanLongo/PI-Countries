@@ -14,7 +14,7 @@
 
 .select{
     border: 1px black solid;
-    box-shadow: 1px 0.5px 7px 1.3px;
+    box-shadow: 0.3px 0.4px 4px 0.8px;
     border-radius: 5px;
     background-color: rgba(250, 235, 215, 0.813);
 }

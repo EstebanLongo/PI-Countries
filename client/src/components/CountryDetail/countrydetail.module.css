@@ -1,5 +1,8 @@
 .backDetail {
-  background-color: #2a2438;
+  /* background-color: #2a2438; */
+  background-image: url("https://images.pexels.com/photos/5643136/pexels-photo-5643136.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 180vh;
   margin-bottom: -30px;
 }
@@ -14,7 +17,7 @@
   border-radius: 3px;
   width: 450px;
   height: 175vh;
-  background-color: rgba(102, 97, 94, 0.539);
+  background-color: rgba(102, 97, 94, 0.749);
 }
 
 .flag {
