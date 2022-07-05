@@ -2,7 +2,7 @@ const axios = require("axios");
 
 export function getCountries() {
   return async function (dispatch) {
-    let countries = await axios.get("http://localhost:3001/countries");
+    let countries = await axios.get("/countries");
     return dispatch({
       type: "GET_COUNTRIES",
       payload: countries.data,
@@ -36,7 +36,7 @@ export function getNameCountry(name) {
     try {
       let countryName = await axios.get(
         //en vez del + name iria el continent
-        "http://localhost:3001/countries?name=" + name
+        "/countries?name=" + name
       );
       return dispatch({
         //"SEARCH_CONTINENT_NAME"
@@ -52,7 +52,7 @@ export function getNameCountry(name) {
 export function getDetail(id) {
   return async function (dispatch) {
     try {
-      let detail = await axios.get("http://localhost:3001/countries/" + id);
+      let detail = await axios.get("/countries/" + id);
       return dispatch({
         type: "GET_DETAIL",
         payload: detail.data,
@@ -75,7 +75,7 @@ export function getDetail(id) {
 export function createActivity(payload) {
   return async function (dispatch) {
     try {
-      const act = await axios.post("http://localhost:3001/activities", payload);
+      const act = await axios.post("/activities", payload);
       return act;
     } catch (error) {
       alert("Creation failed");
@@ -86,7 +86,7 @@ export function createActivity(payload) {
 
 export function getActivities() {
   return async function (dispatch) {
-    let info = await axios.get("http://localhost:3001/activities");
+    let info = await axios.get("/activities");
     return dispatch({
       type: "GET_ACTIVITIES",
       payload: info.data,
@@ -97,7 +97,7 @@ export function getActivities() {
 export function deleteActivity(payload) {
   return async function (dispatch) {
     try {
-      axios.delete("http://localhost:3001/activities/" + payload);
+      axios.delete("/activities/" + payload);
     } catch (error) {
       console.log(error);
     }
